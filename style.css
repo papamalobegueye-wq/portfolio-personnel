@@ -1,0 +1,932 @@
+/* ============================================================
+   PORTFOLIO — style.css
+   Palette : #000000 fond | #cccccc texte | #be1220 accent
+   Approche : Mobile-first — breakpoints à 768px et 1024px
+   Fonts : Cormorant Garamond (titres) + DM Sans (corps)
+   ============================================================ */
+
+/* ---------- 0. GOOGLE FONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+
+/* ---------- 1. VARIABLES CSS (Design Tokens) ---------- */
+:root {
+  /* Couleurs */
+  --clr-bg:          #000000;
+  --clr-bg-soft:     #0d0d0d;
+  --clr-bg-card:     #111111;
+  --clr-border:      #1f1f1f;
+  --clr-text:        #cccccc;
+  --clr-text-muted:  #666666;
+  --clr-text-bright: #eeeeee;
+  --clr-accent:      #be1220;
+  --clr-accent-dark: #8c0d18;
+  --clr-white:       #ffffff;
+
+  /* Typographie */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --fs-xs:   0.75rem;   /* 12px */
+  --fs-sm:   0.875rem;  /* 14px */
+  --fs-base: 1rem;      /* 16px */
+  --fs-lg:   1.125rem;  /* 18px */
+  --fs-xl:   1.5rem;    /* 24px */
+  --fs-2xl:  2rem;      /* 32px */
+  --fs-3xl:  2.75rem;   /* 44px */
+  --fs-4xl:  3.75rem;   /* 60px */
+
+  /* Espacement */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: 7rem;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   280ms ease;
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Bordures */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+}
+
+
+/* ---------- 2. RESET & BASE ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  /* Grain de texture subtil */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+  color: var(--clr-accent);
+}
+
+
+/* ---------- 3. TYPOGRAPHIE ---------- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  color: var(--clr-text-bright);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl);  }
+
+p { font-size: var(--fs-base); }
+
+small { font-size: var(--fs-xs); }
+
+
+/* ---------- 4. UTILITAIRES ---------- */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* Ligne décorative rouge avant les titres de section */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background-color: var(--clr-accent);
+  flex-shrink: 0;
+}
+
+
+/* ---------- 5. NAVBAR ---------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--clr-border);
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+header nav > a {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--clr-text-bright);
+  letter-spacing: 0.05em;
+  transition: color var(--transition-base);
+}
+
+header nav > a:hover {
+  color: var(--clr-accent);
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+header nav ul a {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--transition-base);
+}
+
+/* Soulignement animé sur les liens nav */
+header nav ul a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--clr-accent);
+  transition: width var(--transition-slow);
+}
+
+header nav ul a:hover {
+  color: var(--clr-text-bright);
+}
+
+header nav ul a:hover::after {
+  width: 100%;
+}
+
+
+/* ---------- 6. SECTION — BASE ---------- */
+section {
+  padding-block: var(--space-xl);
+}
+
+/* Compenser la navbar fixe */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+
+/* ---------- 7. HERO ---------- */
+#hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 100px;
+  padding-bottom: var(--space-xl);
+  padding-inline: var(--space-md);
+  border-bottom: 1px solid var(--clr-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cercle décoratif en fond */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  width: min(600px, 100vw);
+  height: min(600px, 100vw);
+  border-radius: 50%;
+  border: 1px solid var(--clr-border);
+  pointer-events: none;
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: min(380px, 70vw);
+  height: min(380px, 70vw);
+  border-radius: 50%;
+  border: 1px solid rgba(190, 18, 32, 0.15);
+  pointer-events: none;
+}
+
+#hero h1 {
+  font-size: clamp(var(--fs-3xl), 9vw, var(--fs-4xl));
+  font-weight: 300;
+  font-style: italic;
+  color: var(--clr-white);
+  line-height: 1.05;
+  max-width: 14ch;
+  margin-bottom: var(--space-md);
+}
+
+#hero > p {
+  font-size: var(--fs-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Groupe de boutons hero */
+#hero > a {
+  display: inline-block;
+}
+
+/* Sélection du 1er lien (CTA primaire) */
+#hero > a:first-of-type {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--clr-accent);
+  border-radius: var(--radius-sm);
+  margin-right: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              transform var(--transition-fast);
+}
+
+#hero > a:first-of-type:hover {
+  background-color: var(--clr-accent-dark);
+  transform: translateY(-2px);
+}
+
+/* 2ème lien (CTA secondaire) */
+#hero > a:last-of-type {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background-color: transparent;
+  color: var(--clr-text);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+  transition: border-color var(--transition-base),
+              color var(--transition-base),
+              transform var(--transition-fast);
+}
+
+#hero > a:last-of-type:hover {
+  border-color: var(--clr-text-muted);
+  color: var(--clr-text-bright);
+  transform: translateY(-2px);
+}
+
+
+/* ---------- 8. SECTION À PROPOS ---------- */
+#about {
+  background-color: var(--clr-bg);
+  border-bottom: 1px solid var(--clr-border);
+  padding-inline: var(--space-md);
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+#about-title {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-3xl));
+  margin-bottom: var(--space-lg);
+}
+
+#about article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+#about figure {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+#about figure img {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  filter: grayscale(30%);
+  border: 1px solid var(--clr-border);
+  transition: filter var(--transition-slow), transform var(--transition-slow);
+}
+
+#about figure img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+#about figcaption {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#about h3 {
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  color: var(--clr-text-bright);
+  margin-bottom: var(--space-xs);
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+/* Trait rouge avant les sous-titres */
+#about h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.2em;
+  background-color: var(--clr-accent);
+  border-radius: 2px;
+}
+
+#about p {
+  color: var(--clr-text);
+  margin-bottom: var(--space-lg);
+  max-width: 65ch;
+}
+
+#about ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+#about ul li {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+#about ul li:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+/* Bouton de téléchargement CV */
+#about > article > div > a[download] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              transform var(--transition-fast);
+}
+
+#about > article > div > a[download]:hover {
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+  transform: translateY(-2px);
+}
+
+
+/* ---------- 9. SECTION PROJETS ---------- */
+#projects {
+  background-color: var(--clr-bg-soft);
+  border-bottom: 1px solid var(--clr-border);
+  padding-inline: var(--space-md);
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+#projects-title {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-3xl));
+  margin-bottom: var(--space-lg);
+}
+
+/* Grille des cartes projets */
+#projects > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+/* Carte projet */
+#projects li article {
+  background-color: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-base),
+              transform var(--transition-slow),
+              box-shadow var(--transition-slow);
+}
+
+#projects li article:hover {
+  border-color: rgba(190, 18, 32, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(190, 18, 32, 0.08);
+}
+
+/* Image de la carte */
+#projects li article figure {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+#projects li article figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+}
+
+#projects li article:hover figure img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
+/* Contenu texte de la carte */
+#projects li article h3 {
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  color: var(--clr-text-bright);
+  padding: var(--space-md) var(--space-md) var(--space-xs);
+}
+
+#projects li article > p {
+  padding: 0 var(--space-md);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+/* Tags technos */
+#projects li article > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding: 0 var(--space-md) var(--space-sm);
+}
+
+#projects li article > ul li {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  background-color: rgba(190, 18, 32, 0.08);
+  border: 1px solid rgba(190, 18, 32, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Liens de la carte */
+#projects li article nav {
+  display: flex;
+  gap: 1px;
+  border-top: 1px solid var(--clr-border);
+  margin-top: var(--space-sm);
+}
+
+#projects li article nav a {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-sm);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  transition: color var(--transition-base), background-color var(--transition-base);
+}
+
+#projects li article nav a:first-child {
+  border-right: 1px solid var(--clr-border);
+}
+
+#projects li article nav a:hover {
+  color: var(--clr-text-bright);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+#projects li article nav a:last-child:hover {
+  color: var(--clr-accent);
+}
+
+
+/* ---------- 10. SECTION CONTACT ---------- */
+#contact {
+  background-color: var(--clr-bg);
+  padding-inline: var(--space-md);
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+#contact-title {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-3xl));
+  margin-bottom: var(--space-xs);
+}
+
+#contact > p:first-of-type {
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-lg);
+  max-width: 60ch;
+}
+
+/* Formulaire */
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 640px;
+  margin-bottom: var(--space-xl);
+}
+
+/* Groupe champ + label */
+#contact form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#contact label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  transition: color var(--transition-base);
+}
+
+/* Surbrillance du label quand le champ est actif */
+#contact form > div:focus-within label {
+  color: var(--clr-accent);
+}
+
+/* Inputs et textarea */
+#contact input,
+#contact textarea {
+  width: 100%;
+  background-color: var(--clr-bg-card);
+  color: var(--clr-text-bright);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 300;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem var(--space-sm);
+  outline: none;
+  caret-color: var(--clr-accent);
+  transition: border-color var(--transition-base),
+              background-color var(--transition-base);
+  appearance: none;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: var(--clr-text-muted);
+  font-weight: 300;
+}
+
+#contact input:hover,
+#contact textarea:hover {
+  border-color: #333333;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: var(--clr-accent);
+  background-color: #0d0d0d;
+}
+
+#contact textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Groupe de boutons */
+#contact form > div:last-of-type {
+  flex-direction: row;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Bouton submit */
+#contact button[type="submit"] {
+  flex: 1;
+  padding: 0.9rem 2rem;
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--clr-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-base),
+              transform var(--transition-fast),
+              box-shadow var(--transition-base);
+}
+
+#contact button[type="submit"]:hover {
+  background-color: var(--clr-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(190, 18, 32, 0.3);
+}
+
+#contact button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Bouton reset */
+#contact button[type="reset"] {
+  padding: 0.9rem 1.5rem;
+  background-color: transparent;
+  color: var(--clr-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+#contact button[type="reset"]:hover {
+  color: var(--clr-text);
+  border-color: var(--clr-text-muted);
+}
+
+/* Note champs obligatoires */
+#contact form > p {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+/* Bloc adresse / réseaux */
+#contact address {
+  font-style: normal;
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--space-lg);
+  max-width: 640px;
+}
+
+#contact address > p {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+#contact address ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+#contact address a {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  position: relative;
+  padding-bottom: 1px;
+  transition: color var(--transition-base);
+}
+
+#contact address a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--clr-accent);
+  transition: width var(--transition-slow);
+}
+
+#contact address a:hover {
+  color: var(--clr-text-bright);
+}
+
+#contact address a:hover::after {
+  width: 100%;
+}
+
+
+/* ---------- 11. FOOTER ---------- */
+footer {
+  background-color: var(--clr-bg-soft);
+  border-top: 1px solid var(--clr-border);
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-md);
+}
+
+footer > p {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-xs);
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+footer nav {
+  max-width: 1140px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+footer nav a {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  transition: color var(--transition-base);
+}
+
+footer nav a:hover {
+  color: var(--clr-accent);
+}
+
+
+/* ---------- 12. BREAKPOINT — TABLETTE (≥ 768px) ---------- */
+@media (min-width: 768px) {
+
+  h1 { font-size: var(--fs-4xl); }
+  h2 { font-size: var(--fs-3xl); }
+
+  #about article {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-xl);
+  }
+
+  #about figure img {
+    width: 220px;
+  }
+
+  #projects > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  footer > p,
+  footer nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer nav {
+    margin-top: 0;
+    gap: var(--space-lg);
+  }
+}
+
+
+/* ---------- 13. BREAKPOINT — DESKTOP (≥ 1024px) ---------- */
+@media (min-width: 1024px) {
+
+  section {
+    padding-block: var(--space-2xl);
+  }
+
+  #hero {
+    padding-inline: var(--space-xl);
+  }
+
+  #about,
+  #projects,
+  #contact {
+    padding-inline: var(--space-xl);
+  }
+
+  #about figure img {
+    width: 260px;
+  }
+
+  #projects > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  header nav {
+    padding-inline: var(--space-xl);
+  }
+}
+
+
+/* ---------- 14. ACCESSIBILITÉ — focus visible ---------- */
+:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Réduction des animations (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

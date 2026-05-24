@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Papa Malobé Gueye</title>
+  </head>
+
+  <body>
+
+    <!-- ========== NAVBAR ========== -->
+    <header>
+      <nav>
+        <a href="#" aria-label="Retour en haut de page">
+          <strong >PAPA MALOBÉ GUEYE</strong>
+        </a>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#projects">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ========== HERO ========== -->
+      <section id="hero" aria-label="Présentation principale">
+        <h1>Malobé Gueye</h1>
+        <p>[Votre titre — ex : Développeur Web Fullstack JavaScript]</p>
+        <a href="#projects">Voir mes projets</a>
+        <a href="#contact">Me contacter</a>
+      </section>
+
+      <!-- ========== À PROPOS ========== -->
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">À propos</h2>
+
+        <article>
+          <figure>
+            <img
+              src="https://placehold.co/200x200?text=Photo"
+              alt="Photo de profil de Papa Malobé Gueye"
+              width="200"
+              height="200"
+            />
+            <figcaption>Malobé Gueye — [Votre titre]</figcaption>
+          </figure>
+
+          <div>
+            <h3>Qui suis-je ?</h3>
+            <p>
+              Moi, c'est Malobé, <br> Développeur web spécialisé dans l'écosystème JavaScript, je conçois des applications 
+              dynamiques et fluides avec React.js et Tailwind CSS. <br>Passionné par la résolution de problémes, 
+              j'aime automatiser les processus. <br>Curieux et axé sur le continuous learning, je pousse actuellement 
+              vers TypeScript pour des projets toujours plus robustes.
+            </p>
+
+            <h3>Mes compétences</h3>
+            <ul>
+              <li>HTML5 / CSS3</li>
+              <li>JavaScript ES6+</li>
+              <li>React.js · Hooks · Context API</li>
+              <li>Tailwind CSS</li>
+              <li>Node.js · Express</li>
+              <li>Git · GitHub</li>
+              <li>Responsive Design · Mobile-first</li>
+              <li>REST API</li>
+            </ul>
+
+            <a href="[lien-vers-votre-cv.pdf]" download>
+              Télécharger mon CV (PDF)
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== PROJETS ========== -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Mes Projets</h2>
+
+        <ul>
+
+          <!-- Projet 1 -->
+          <li>
+            <article>
+              <figure>
+                <img
+                  src="https://placehold.co/400x220?text=Apercu+Projet+1"
+                  alt="Aperçu du projet [Nom du Projet 1]"
+                  width="400"
+                  height="220"
+                />
+              </figure>
+              <h3>ShopFlow — Boutique en ligne moderne</h3>
+              <p>
+                Une plateforme e-commerce complète pensée pour les commerces locaux qui
+                veulent vendre en ligne sans friction. Catalogue produits filtrable, panier
+                persistant, tunnel d'achat en trois étapes et interface d'administration
+                pour gérer les stocks. Le tout conçu mobile-first, avec des temps de
+                chargement optimisés pour les connexions 3G.
+              </p>
+              <ul aria-label="Technologies utilisées">
+                <li>React.js</li>
+                <li>Context API</li>
+                <li>Node.js</li>
+              </ul>
+              <nav aria-label="Liens du projet 1">
+                <a href="[lien-demo]" target="_blank" rel="noopener noreferrer">
+                  Voir la démo
+                </a>
+                <a href="[lien-github]" target="_blank" rel="noopener noreferrer">
+                  Voir le code (GitHub)
+                </a>
+              </nav>
+            </article>
+          </li>
+
+          <!-- Projet 2 -->
+          <li>
+            <article>
+              <figure>
+                <img
+                  src="https://placehold.co/400x220?text=Apercu+Projet+2"
+                  alt="Aperçu du projet [Nom du Projet 2]"
+                  width="400"
+                  height="220"
+                />
+              </figure>
+              <h3>SkyCheck — Météo en temps réel</h3>
+              <p>
+                Application météo minimaliste qui affiche les conditions actuelles et les
+                prévisions sur 7 jours pour n'importe quelle ville dans le monde. Géolocalisation
+                automatique, bascule °C / °F, icônes animées selon les conditions et
+                historique des villes consultées stocké localement. Connectée à l'API
+                OpenWeatherMap avec gestion des erreurs et des états de chargement.
+              </p>
+              <ul aria-label="Technologies utilisées">
+                <li>React.js</li>
+                <li>API REST</li>
+                <li>CSS Modules</li>
+              </ul>
+              <nav aria-label="Liens du projet 2">
+                <a href="[lien-demo]" target="_blank" rel="noopener noreferrer">
+                  Voir la démo
+                </a>
+                <a href="[lien-github]" target="_blank" rel="noopener noreferrer">
+                  Voir le code (GitHub)
+                </a>
+              </nav>
+            </article>
+          </li>
+
+          <!-- Projet 3 -->
+          <li>
+            <article>
+              <figure>
+                <img
+                  src="https://placehold.co/400x220?text=Apercu+Projet+3"
+                  alt="Aperçu du projet [Nom du Projet 3]"
+                  width="400"
+                  height="220"
+                />
+              </figure>
+              <h3>Inkwell — Plateforme de blogging</h3>
+              <p>
+                Clone de Medium centré sur la lisibilité et la simplicité d'écriture.
+                Authentification utilisateur, éditeur de texte riche, système de tags,
+                likes et commentaires en temps réel. L'interface est épurée pour mettre
+                le contenu au premier plan — police de lecture optimisée, mode sombre
+                natif et URL canoniques pour le référencement.
+              </p>
+              <ul aria-label="Technologies utilisées">
+                <li>React.js</li>
+                <li>Node.js</li>
+                <li>Express</li>
+              </ul>
+              <nav aria-label="Liens du projet 3">
+                <a href="[lien-demo]" target="_blank" rel="noopener noreferrer">
+                  Voir la démo
+                </a>
+                <a href="[lien-github]" target="_blank" rel="noopener noreferrer">
+                  Voir le code (GitHub)
+                </a>
+              </nav>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ========== CONTACT ========== -->
+      <form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  aria-label="Formulaire de contact"
+>
+
+  <!-- ✅ Clé Web3Forms — obligatoire, ne pas supprimer -->
+  <input type="hidden" name="access_key" value="66df977e-91d5-4853-8ae3-ff23e82636bf" />
+
+  <!-- Optionnel : sujet de l'e-mail que tu recevras -->
+  <input type="hidden" name="subject" value="Nouveau message depuis ton portfolio" />
+
+  <!-- Optionnel : redirige vers une page de confirmation après envoi -->
+  <input type="hidden" name="redirect" value="https://ton-username.github.io/merci.html" />
+
+  <div>
+    <label for="name">Nom complet <abbr title="Champ obligatoire">*</abbr></label>
+    <input type="text" id="name" name="name"
+      placeholder="Ex : Mouhamed Gueye"
+      autocomplete="name" required minlength="2" maxlength="100" />
+  </div>
+
+  <div>
+    <label for="email">Adresse e-mail <abbr title="Champ obligatoire">*</abbr></label>
+    <input type="email" id="email" name="email"
+      placeholder="Ex : mary@exemple.com"
+      autocomplete="email" required />
+  </div>
+
+  <div>
+    <label for="subject">Sujet</label>
+    <input type="text" id="subject" name="subject"
+      placeholder="Ex : Proposition de collaboration" maxlength="150" />
+  </div>
+
+  <div>
+    <label for="message">Message <abbr title="Champ obligatoire">*</abbr></label>
+    <textarea id="message" name="message"
+      placeholder="Décrivez votre projet ou votre demande en quelques lignes..."
+      rows="6" required minlength="10" maxlength="1000"></textarea>
+  </div>
+
+  <div>
+    <button type="reset">Effacer</button>
+    <button type="submit">Envoyer le message</button>
+  </div>
+
+  <p>
+    <small>
+      Les champs marqués d'un <abbr title="Champ obligatoire">*</abbr> sont obligatoires.
+    </small>
+  </p>
+
+</form>
+
+        <!-- Coordonnées alternatives -->
+        <address>
+          <p>Vous pouvez aussi me retrouver sur :</p>
+          <ul>
+            <li>
+              <a href="mailto:[papamalobegueye@email.com]">Papamalobegueye@gmail.com</a>
+            </li>
+            <li>
+              <a href="https://github.com/papamalobegueye-wq" target="_blank" rel="noopener noreferrer">
+                GitHub — [votre-pseudo]
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/papa-malob%C3%A9-gueye-9b1611264" target="_blank" rel="noopener noreferrer">
+                LinkedIn — [votre-profil]
+              </a>
+            </li>
+          </ul>
+        </address>
+
+      </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <p>
+        &copy; <time datetime="2026">2026</time> Papa Malobé Gueye — Tous droits réservés.
+      </p>
+      <p>Conçu et développé par Papa Malobé Gueye.</p>
+      <nav aria-label="Liens de bas de page">
+        <a href="#hero">Retour en haut</a>
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </footer>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
