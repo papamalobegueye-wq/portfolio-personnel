@@ -192,84 +192,83 @@
       </section>
 
       <!-- ========== CONTACT ========== -->
-      <form
-  action="https://api.web3forms.com/submit"
-  method="POST"
-  aria-label="Formulaire de contact"
->
+     <!-- ========== CONTACT ========== -->
+<section id="contact" aria-labelledby="contact-title">
 
-  <!-- ✅ Clé Web3Forms — obligatoire, ne pas supprimer -->
-  <input type="hidden" name="access_key" value="66df977e-91d5-4853-8ae3-ff23e82636bf" />
-
-  <!-- Optionnel : sujet de l'e-mail que tu recevras -->
-  <input type="hidden" name="subject" value="Nouveau message depuis ton portfolio" />
-
-  <!-- Optionnel : redirige vers une page de confirmation après envoi -->
-  <input type="hidden" name="redirect" value="https://ton-username.github.io/merci.html" />
-
-  <div>
-    <label for="name">Nom complet <abbr title="Champ obligatoire">*</abbr></label>
-    <input type="text" id="name" name="name"
-      placeholder="Ex : Mouhamed Gueye"
-      autocomplete="name" required minlength="2" maxlength="100" />
-  </div>
-
-  <div>
-    <label for="email">Adresse e-mail <abbr title="Champ obligatoire">*</abbr></label>
-    <input type="email" id="email" name="email"
-      placeholder="Ex : mary@exemple.com"
-      autocomplete="email" required />
-  </div>
-
-  <div>
-    <label for="subject">Sujet</label>
-    <input type="text" id="subject" name="subject"
-      placeholder="Ex : Proposition de collaboration" maxlength="150" />
-  </div>
-
-  <div>
-    <label for="message">Message <abbr title="Champ obligatoire">*</abbr></label>
-    <textarea id="message" name="message"
-      placeholder="Décrivez votre projet ou votre demande en quelques lignes..."
-      rows="6" required minlength="10" maxlength="1000"></textarea>
-  </div>
-
-  <div>
-    <button type="reset">Effacer</button>
-    <button type="submit">Envoyer le message</button>
-  </div>
-
+  <h2 id="contact-title">Contact</h2>
   <p>
-    <small>
-      Les champs marqués d'un <abbr title="Champ obligatoire">*</abbr> sont obligatoires.
-    </small>
+    Une idée de projet ? Une opportunité ? N'hésitez pas à m'écrire,
+    je vous répondrai dans les plus brefs délais.
   </p>
 
-</form>
+  <form
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    aria-label="Formulaire de contact"
+  >
+    <input type="hidden" name="access_key" value="66df977e-91d5-4853-8ae3-ff23e82636bf" />
+    <input type="hidden" name="subject" value="Nouveau message depuis ton portfolio" />
+    <input type="hidden" name="redirect" value="https://ton-username.github.io/merci.html" />
 
-        <!-- Coordonnées alternatives -->
-        <address>
-          <p>Vous pouvez aussi me retrouver sur :</p>
-          <ul>
-            <li>
-              <a href="mailto:[papamalobegueye@email.com]">Papamalobegueye@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://github.com/papamalobegueye-wq" target="_blank" rel="noopener noreferrer">
-                GitHub — [votre-pseudo]
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/papa-malob%C3%A9-gueye-9b1611264" target="_blank" rel="noopener noreferrer">
-                LinkedIn — [votre-profil]
-              </a>
-            </li>
-          </ul>
-        </address>
+    <div>
+      <label for="name">Nom complet <abbr title="Champ obligatoire">*</abbr></label>
+      <input type="text" id="name" name="name"
+        placeholder="Ex : Mouhamed Gueye"
+        autocomplete="name" required minlength="2" maxlength="100" />
+    </div>
 
-      </section>
+    <div>
+      <label for="email">Adresse e-mail <abbr title="Champ obligatoire">*</abbr></label>
+      <input type="email" id="email" name="email"
+        placeholder="Ex : mary@exemple.com"
+        autocomplete="email" required />
+    </div>
 
-    </main>
+    <div>
+      <label for="subject">Sujet</label>
+      <input type="text" id="subject" name="subject"
+        placeholder="Ex : Proposition de collaboration" maxlength="150" />
+    </div>
+
+    <div>
+      <label for="message">Message <abbr title="Champ obligatoire">*</abbr></label>
+      <textarea id="message" name="message"
+        placeholder="Décrivez votre projet ou votre demande en quelques lignes..."
+        rows="6" required minlength="10" maxlength="1000"></textarea>
+    </div>
+
+    <div class="btn-group">
+      <button type="reset">Effacer</button>
+      <button type="submit">Envoyer le message</button>
+    </div>
+
+    <p>
+      <small>
+        Les champs marqués d'un <abbr title="Champ obligatoire">*</abbr> sont obligatoires.
+      </small>
+    </p>
+  </form>
+
+  <address>
+    <p>Vous pouvez aussi me retrouver sur :</p>
+    <ul>
+      <li>
+        <a href="mailto:papamalobegueye@gmail.com">Papamalobegueye@gmail.com</a>
+      </li>
+      <li>
+        <a href="https://github.com/papamalobegueye-wq" target="_blank" rel="noopener noreferrer">
+          GitHub — papamalobegueye-wq
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/papa-malobé-gueye-9b1611264" target="_blank" rel="noopener noreferrer">
+          LinkedIn — Papa Malobé Gueye
+        </a>
+      </li>
+    </ul>
+  </address>
+
+</section>
 
     <!-- ========== FOOTER ========== -->
     <footer>

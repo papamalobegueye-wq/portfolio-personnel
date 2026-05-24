@@ -601,41 +601,57 @@ section[id] {
 
 
 /* ---------- 10. SECTION CONTACT ---------- */
+/* ---------- 10. SECTION CONTACT ---------- */
 #contact {
-  background-color: var(--clr-bg);
-  padding-inline: var(--space-md);
+  width: 100%;
   max-width: 1140px;
   margin-inline: auto;
+  background-color: var(--clr-bg);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 
-#contact-title {
+#contact h2 {
+  font-family: var(--font-display);
   font-size: clamp(var(--fs-2xl), 5vw, var(--fs-3xl));
+  font-weight: 300;
+  color: var(--clr-text-bright);
   margin-bottom: var(--space-xs);
 }
 
-#contact > p:first-of-type {
+#contact > p {
   color: var(--clr-text-muted);
+  font-size: var(--fs-base);
   margin-bottom: var(--space-lg);
   max-width: 60ch;
 }
 
-/* Formulaire */
+/* ── Formulaire ── */
 #contact form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  width: 100%;
   max-width: 640px;
   margin-bottom: var(--space-xl);
 }
 
-/* Groupe champ + label */
-#contact form > div {
+/* Neutralise les inputs cachés Web3Forms */
+#contact form input[type="hidden"] {
+  display: none;
+}
+
+/* Chaque groupe label + champ */
+#contact form div {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-#contact label {
+#contact form label {
+  display: block;
   font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -644,14 +660,14 @@ section[id] {
   transition: color var(--transition-base);
 }
 
-/* Surbrillance du label quand le champ est actif */
-#contact form > div:focus-within label {
+#contact form div:focus-within label {
   color: var(--clr-accent);
 }
 
-/* Inputs et textarea */
-#contact input,
-#contact textarea {
+/* Champs texte et textarea */
+#contact form input:not([type="hidden"]),
+#contact form textarea {
+  display: block;
   width: 100%;
   background-color: var(--clr-bg-card);
   color: var(--clr-text-bright);
@@ -660,103 +676,93 @@ section[id] {
   font-weight: 300;
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-sm);
-  padding: 0.875rem var(--space-sm);
+  padding: 0.875rem 1rem;
   outline: none;
   caret-color: var(--clr-accent);
+  -webkit-appearance: none;
+  appearance: none;
   transition: border-color var(--transition-base),
               background-color var(--transition-base);
-  appearance: none;
 }
 
-#contact input::placeholder,
-#contact textarea::placeholder {
+#contact form input::placeholder,
+#contact form textarea::placeholder {
   color: var(--clr-text-muted);
-  font-weight: 300;
 }
 
-#contact input:hover,
-#contact textarea:hover {
+#contact form input:hover,
+#contact form textarea:hover {
   border-color: #333333;
 }
 
-#contact input:focus,
-#contact textarea:focus {
+#contact form input:focus,
+#contact form textarea:focus {
   border-color: var(--clr-accent);
-  background-color: #0d0d0d;
+  background-color: var(--clr-bg-soft);
 }
 
-#contact textarea {
+#contact form textarea {
   resize: vertical;
   min-height: 150px;
 }
 
-/* Groupe de boutons */
-#contact form > div:last-of-type {
-  flex-direction: row;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
+/* Groupe boutons — colonne sur mobile */
+#contact form div.btn-group {
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-/* Bouton submit */
-#contact button[type="submit"] {
-  flex: 1;
-  padding: 0.9rem 2rem;
-  background-color: var(--clr-accent);
-  color: var(--clr-white);
+#contact form button {
+  display: block;
+  width: 100%;
   font-family: var(--font-body);
   font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid var(--clr-accent);
   border-radius: var(--radius-sm);
+  padding: 0.9rem 1.5rem;
   cursor: pointer;
   transition: background-color var(--transition-base),
+              color var(--transition-base),
               transform var(--transition-fast),
               box-shadow var(--transition-base);
 }
 
-#contact button[type="submit"]:hover {
+#contact form button[type="submit"] {
+  background-color: var(--clr-accent);
+  color: var(--clr-white);
+  border: 1px solid var(--clr-accent);
+}
+
+#contact form button[type="submit"]:hover {
   background-color: var(--clr-accent-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(190, 18, 32, 0.3);
 }
 
-#contact button[type="submit"]:active {
+#contact form button[type="submit"]:active {
   transform: translateY(0);
   box-shadow: none;
 }
 
-/* Bouton reset */
-#contact button[type="reset"] {
-  padding: 0.9rem 1.5rem;
+#contact form button[type="reset"] {
   background-color: transparent;
   color: var(--clr-text-muted);
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   border: 1px solid var(--clr-border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: color var(--transition-base),
-              border-color var(--transition-base);
 }
 
-#contact button[type="reset"]:hover {
+#contact form button[type="reset"]:hover {
   color: var(--clr-text);
   border-color: var(--clr-text-muted);
 }
 
-/* Note champs obligatoires */
-#contact form > p {
-  color: var(--clr-text-muted);
+#contact form p {
   font-size: var(--fs-xs);
-  line-height: 1.5;
+  color: var(--clr-text-muted);
 }
 
-/* Bloc adresse / réseaux */
+/* ── Adresse / réseaux ── */
 #contact address {
   font-style: normal;
   border-top: 1px solid var(--clr-border);
@@ -764,7 +770,7 @@ section[id] {
   max-width: 640px;
 }
 
-#contact address > p {
+#contact address p {
   font-size: var(--fs-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -775,7 +781,7 @@ section[id] {
 #contact address ul {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0.5rem;
 }
 
 #contact address a {
@@ -803,6 +809,29 @@ section[id] {
 
 #contact address a:hover::after {
   width: 100%;
+}
+
+/* ── Responsive tablette (≥ 600px) ── */
+@media (min-width: 600px) {
+  #contact form div.btn-group {
+    flex-direction: row;
+  }
+
+  #contact form button {
+    width: auto;
+    flex: 1;
+  }
+
+  #contact form button[type="reset"] {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #contact {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
 }
 
 
